@@ -1,0 +1,23 @@
+[package]
+name = "k8vm"
+version = "0.0.0"
+edition = "2018"
+authors = ["Aleksandar T. <xtrifunovic@gmail.com>"]
+description = "Version manager for kubectl."
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+clap = "3.0.0-beta.2"
+tokio = { version = "1", features = ["full"] }
+home = "0.5.3"
+which = "4.1.0"
+octocrab = "0.10.1"
+os_info = "3.0.6"
+heim = "0.0.11"
+reqwest = "0.11.4"
+anyhow = "1.0.42"
+human-panic = "1.0.3"
+colored = "2"
+futures = "0.3.16"
+indicatif = "0.16.2"

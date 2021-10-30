@@ -1,0 +1,4 @@
+- show currently active version when listing local versions
+- allow to switch to original kubectl
+- allow for specifying a list of versions to install/uninstall
+- sort by semver, not by strings
