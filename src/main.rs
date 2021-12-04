@@ -1,6 +1,4 @@
-use human_panic;
 use colored::Colorize;
-
 mod commands {
     mod deinit;
     pub use deinit::deinit;
@@ -31,7 +29,7 @@ mod util;
 #[tokio::main]
 async fn main() {
     human_panic::setup_panic!();
-    
+
     if let Err(err) = cli::init().await {
         eprintln!("{}", format!("{}", err).red());
     }

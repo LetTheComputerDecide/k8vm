@@ -1,15 +1,16 @@
 pub mod deinit {
-    use std::fmt::Display;
     use colored::Colorize;
+    use std::fmt::Display;
 
     use crate::constants;
 
     pub fn about() -> impl Display {
         "Delete all binaries and metadata, and revert to original kubectl."
     }
-    
+
     pub fn could_not_detect_kubectl_location() -> impl Display {
-        "Couldn't detect kubectl binary location. Original kubectl binary won't be restored.".yellow()
+        "Couldn't detect kubectl binary location. Original kubectl binary won't be restored."
+            .yellow()
     }
 
     pub fn kubectl_restored() -> impl Display {
@@ -52,7 +53,7 @@ pub mod install {
     use std::fmt::Display;
 
     use colored::Colorize;
-    
+
     pub fn about() -> &'static str {
         "Installs specified kubectl version(s)."
     }
@@ -83,8 +84,8 @@ pub mod list_remote {
 }
 
 pub mod uninstall {
-    use std::fmt::Display;
     use colored::Colorize;
+    use std::fmt::Display;
 
     pub fn about() -> impl Display {
         "Uninstalls specified kubectl version(s)."
@@ -108,15 +109,17 @@ pub mod use_version {
 }
 
 pub mod common {
-    use std::fmt::Display;
     use colored::Colorize;
+    use std::fmt::Display;
 
     use crate::constants;
-    
+
     pub fn not_inited_yet() -> impl Display {
         format!(
             "{} was not initialized yet. Please run: \"{} init\".",
-            constants::APP_NAME, constants::APP_NAME
-        ).yellow()
+            constants::APP_NAME,
+            constants::APP_NAME
+        )
+        .yellow()
     }
 }
