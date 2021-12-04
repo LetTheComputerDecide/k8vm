@@ -3,7 +3,7 @@ use tokio::fs;
 use anyhow::Result;
 
 use crate::{
-    messages::{common::*},
+    messages::common::*,
     util::was_not_inited_yet,
 };
 

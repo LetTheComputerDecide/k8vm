@@ -1,6 +1,6 @@
 use anyhow::{Context, Result};
 use heim::host::{platform, Arch};
-use os_info::Type::{Linux, Macos, Windows};
+use os_info::Type::*;
 use std::{fs::Permissions, os::unix::prelude::PermissionsExt, path::PathBuf};
 use tokio::{fs::File, io::AsyncWriteExt};
 
@@ -17,9 +17,7 @@ pub async fn install(app_storage_location: PathBuf, version: &str) -> Result<()>
     }
 
     let os = current_os_string().context(unsupported_os())?;
-    let arch = current_arch_string()
-        .await
-        .context(unsupported_arch())?;
+    let arch = current_arch_string().await.context(unsupported_arch())?;
     // TODO: Check if it already exists.
 
     let url = constants::kubectl_download_url(version, os, arch);
@@ -42,7 +40,9 @@ pub async fn install(app_storage_location: PathBuf, version: &str) -> Result<()>
 fn current_os_string() -> Option<&'static str> {
     match os_info::get().os_type() {
         Windows => Some("windows"),
-        Linux => Some("linux"),
+        Alpine | Amazon | Android | Arch | CentOS | Debian | EndeavourOS | Fedora | Linux
+        | Manjaro | Mint | NixOS | openSUSE | OracleLinux | Pop | Raspbian | Redhat
+        | RedHatEnterprise | Solus | SUSE | Ubuntu => Some("linux"),
         Macos => Some("darwin"),
         _ => None,
     }
